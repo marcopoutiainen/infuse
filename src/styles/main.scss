@@ -1,0 +1,421 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Custom styles */
+body {
+  font-family: "Lexend", sans-serif;
+}
+
+main {
+  @apply flex flex-col;
+
+  @media (min-width: theme("screens.sm")) {
+    @apply w-full m-auto max-w-[1366px];
+  }
+
+  .header {
+    @apply flex justify-between px-5 py-9 z-[9999999];
+    box-shadow: 0px 4px 6.4px 0px #0000001a;
+
+    @media (min-width: theme("screens.sm")) {
+      @apply px-[115px] py-14;
+    }
+
+    .nav {
+      @apply hidden;
+
+      &.active {
+        @apply flex flex-col items-end fixed z-50 right-0 h-[100vh] top-0 w-full;
+      }
+
+      @media (min-width: theme("screens.sm")) {
+        @apply flex justify-between items-center gap-[60px];
+      }
+
+      &-bg {
+        @apply bg-black opacity-40 absolute top-0 bottom-0 left-0 right-0;
+
+        @media (min-width: theme("screens.sm")) {
+          @apply hidden;
+        }
+      }
+
+      &-menu {
+        @apply flex flex-col gap-6 w-1/2 bg-white p-8 z-50 h-full;
+
+        @media (min-width: theme("screens.sm")) {
+          @apply flex flex-row justify-between items-center gap-[197px] p-0;
+          background: none;
+        }
+
+        ul {
+          @apply flex flex-col gap-6;
+
+          @media (min-width: theme("screens.sm")) {
+            @apply flex flex-row items-center gap-9;
+          }
+
+          li {
+            a {
+              @apply font-semibold text-base leading-[20px] text-[#0062A4] text-nowrap relative;
+
+              &.sub-menu {
+                &::after {
+                  @apply absolute -right-4 top-0 bottom-0 h-fit m-auto text-[11px] font-black;
+                  content: "\f078";
+                  font-family: "Font Awesome 5 Free";
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &-contact {
+        @apply hidden gap-4 items-center px-5 py-4 border-2 border-[#FF0000] border-solid;
+
+        @media (min-width: theme("screens.sm")) {
+          @apply flex;
+        }
+
+        a {
+          @apply text-base font-semibold text-[#FF0000] text-nowrap;
+        }
+      }
+    }
+
+    .burger-menu {
+      @apply flex flex-col justify-between w-[43px] h-[25px];
+
+      @media (min-width: theme("screens.sm")) {
+        @apply hidden;
+      }
+
+      &-bar {
+        @apply block w-full h-[4px] bg-[#1B75BB];
+
+        &:nth-child(2) {
+          @apply w-4/5;
+        }
+      }
+    }
+
+    &-contact {
+      &--icon {
+        @media (min-width: theme("screens.sm")) {
+          @apply hidden;
+        }
+      }
+    }
+  }
+
+  .contact-section {
+    @apply z-50;
+    box-shadow: 0px 0px 15px 0px #0000001a;
+
+    @media (min-width: theme("screens.sm")) {
+      @apply flex justify-between  shadow-none;
+    }
+
+    &-info {
+      @apply flex px-5 pt-[69px] relative h-[448px] overflow-hidden;
+
+      @media (min-width: theme("screens.sm")) {
+        @apply w-1/2 h-auto p-0;
+      }
+
+      &-bg {
+        @apply absolute left-0 right-0 top-0 bottom-0 w-full;
+
+        img {
+          @apply object-cover object-center w-full h-full;
+        }
+      }
+
+      &-address {
+        @apply flex flex-col gap-5 bg-white z-50 w-full h-fit text-center py-7;
+
+        @media (min-width: theme("screens.sm")) {
+          @apply w-[370px] mt-auto mr-auto mb-[200px] ml-[117px] px-5 py-7;
+        }
+
+        h3 {
+          @apply font-medium text-2xl leading-8;
+        }
+
+        p {
+          @apply font-normal text-lg leading-7 text-[#787878];
+        }
+      }
+    }
+
+    &-form {
+      @apply flex flex-col gap-3 py-8 px-5;
+
+      @media (min-width: theme("screens.sm")) {
+        @apply w-1/2 py-[69px] px-12;
+      }
+
+      &-title {
+        @apply flex flex-col gap-4 items-center text-center;
+
+        @media (min-width: theme("screens.sm")) {
+          @apply text-left uppercase;
+        }
+
+        h2 {
+          @apply text-[40px] font-bold leading-[48px] w-full;
+        }
+
+        p {
+          @apply text-base font-normal leading-6 text-[#787878];
+        }
+      }
+
+      &-wrap {
+        @apply flex flex-col gap-4;
+
+        @media (min-width: theme("screens.sm")) {
+          @apply grid grid-cols-2 gap-x-6 gap-y-2;
+        }
+
+        label {
+          @apply text-lg font-bold;
+
+          sup {
+            @apply text-[#FF0000];
+          }
+        }
+
+        input,
+        textarea {
+          @apply px-4 py-3 border-2 border-solid border-[#E2E2E2] w-full;
+        }
+
+        button {
+          @apply flex items-center gap-4 bg-[#FF0000] px-5 py-4 w-fit self-center text-white;
+        }
+      }
+
+      &-group {
+        @apply flex flex-col;
+
+        &-input {
+          @apply relative;
+
+          img {
+            @apply absolute top-0 bottom-0 m-auto left-4;
+          }
+
+          input {
+            @apply pl-11;
+          }
+        }
+      }
+
+      &-message {
+        @media (min-width: theme("screens.sm")) {
+          @apply col-span-2;
+        }
+      }
+
+      &-submit {
+        @apply mt-3;
+
+        @media (min-width: theme("screens.sm")) {
+          @apply mt-8 flex-row;
+        }
+      }
+    }
+  }
+
+  .clients-section {
+    @apply flex items-center justify-evenly px-5 py-[70px] gap-7 flex-wrap bg-white;
+
+    @media (min-width: theme("screens.sm")) {
+      @apply justify-between py-[69px] px-[116px];
+    }
+
+    &-logo {
+      @apply h-fit col-span-1;
+      flex: 1 1 12%;
+    }
+  }
+
+  .experience-section {
+    @apply flex flex-col gap-6 px-5;
+
+    @media (min-width: theme("screens.sm")) {
+      @apply p-0;
+    }
+
+    h2 {
+      @apply text-[40px] font-bold text-center uppercase leading-[44px];
+
+      @media (min-width: theme("screens.sm")) {
+        @apply w-3/4 text-left px-[116px];
+      }
+    }
+
+    &-content {
+      @media (min-width: theme("screens.sm")) {
+        @apply py-14 px-6 bg-cover bg-no-repeat;
+        background-image: url("../../assets/images/testimonial-bg.png");
+      }
+
+      &-testimonials {
+        @media (min-width: theme("screens.sm")) {
+          @apply bg-white w-2/5 ml-auto py-24 px-12;
+          box-shadow: 0px 0px 13.2px 0px #0000001a;
+        }
+
+        &--item {
+          @apply flex flex-col items-center gap-4 py-12 border-b-[1px] border-solid border-[#E2E2E2];
+
+          @media (min-width: theme("screens.sm")) {
+            @apply flex-row-reverse;
+          }
+
+          &.first-testimonial {
+            @apply pt-0;
+          }
+
+          &.last-testimonial {
+            @apply border-0 pb-0;
+          }
+
+          p {
+            @apply text-base font-light leading-6 text-black text-center;
+          }
+        }
+      }
+    }
+  }
+
+  .goals-section {
+    @apply flex flex-col gap-8 px-5 mb-[60px] relative pt-16;
+
+    @media (min-width: theme("screens.sm")) {
+      @apply px-[116px] py-24 gap-10;
+    }
+
+    &-buttons {
+      @apply hidden;
+
+      @media (min-width: theme("screens.sm")) {
+        @apply absolute flex items-center gap-2 top-[135px] right-[116px];
+      }
+
+      span {
+        @apply flex items-center justify-center w-[49px] h-[49px] border-2 border-[#787878] border-solid cursor-pointer;
+      }
+    }
+
+    h2 {
+      @apply text-[40px] font-bold leading-[44px] text-center uppercase;
+
+      @media (min-width: theme("screens.sm")) {
+        @apply w-3/4 text-left;
+      }
+    }
+
+    &-wrap {
+      @apply flex flex-col gap-5;
+
+      @media (min-width: theme("screens.sm")) {
+        @apply flex-row overflow-hidden w-7/12;
+      }
+    }
+
+    &-item {
+      @apply flex flex-col gap-5 px-6 py-10 bg-[#E2E2E2] relative;
+
+      @media (min-width: theme("screens.sm")) {
+        @apply hidden;
+      }
+
+      &:nth-child(1) {
+        @media (min-width: theme("screens.sm")) {
+          @apply bg-[#f3f8fc];
+        }
+      }
+
+      &:nth-child(2) {
+        @media (min-width: theme("screens.sm")) {
+          @apply bg-[#f4f8fc];
+        }
+      }
+
+      &:nth-child(3) {
+        @media (min-width: theme("screens.sm")) {
+          @apply bg-[#e9eef1];
+        }
+      }
+
+      @media (min-width: theme("screens.sm")) {
+        &.active {
+          @apply flex justify-between w-full h-[237px];
+        }
+      }
+
+      p {
+        @apply text-base font-light leading-[24px] z-50;
+      }
+
+      span {
+        p {
+          @apply text-base font-light leading-[24px];
+
+          &:first-child {
+            @apply font-medium uppercase;
+          }
+        }
+      }
+
+      img {
+        @apply hidden;
+
+        @media (min-width: theme("screens.sm")) {
+          @apply absolute block top-0 bottom-0 m-auto right-8;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  @apply flex flex-col gap-10 px-5 pb-8;
+
+  @media (min-width: theme("screens.sm")) {
+    @apply w-full items-center m-auto max-w-[1366px] px-[116px] border-t-[1px] gap-3;
+  }
+
+  p {
+    @apply text-base font-normal text-[#333333] text-center;
+  }
+
+  .footer-links {
+    @apply grid grid-cols-2 justify-center gap-10;
+
+    @media (min-width: theme("screens.sm")) {
+      @apply flex gap-[140px];
+    }
+
+    a {
+      @apply col-span-1 text-nowrap text-[12px] font-normal leading-3 text-[#747474];
+
+      &:nth-child(2) {
+        @apply justify-self-end;
+      }
+
+      @media (min-width: theme("screens.sm")) {
+        @apply py-7 px-4;
+      }
+
+      &:last-child {
+        @apply col-span-2 justify-self-center;
+      }
+    }
+  }
+}
